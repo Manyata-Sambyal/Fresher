@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Freshers Party Invitation</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Poppins", Arial, sans-serif;
+
+      background: radial-gradient(circle at top, #ff9a9e 0%, #dba3d8 45%, #a932af 100%);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-size: 160% 160%;
+      animation: bgMove 14s ease-in-out infinite;
+    }
+
+    @keyframes bgMove {
+      0%   { background-position: 0% 0%; }
+      50%  { background-position: 100% 100%; }
+      100% { background-position: 0% 0%; }
+    }
+
+    .card {
+      background: rgba(15, 15, 30, 0.88);
+      border-radius: 22px;
+      padding: 38px 46px;
+      width: 90%;
+      max-width: 540px;
+      box-shadow:
+        0 0 25px rgba(178, 34, 135, 0.816),
+        0 18px 40px rgba(0, 0, 0, 0.7);
+      text-align: center;
+      color: #dcdce6;
+      backdrop-filter: blur(10px);
+      animation: floatIn 0.9s ease-out;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: -2px;
+      border-radius: inherit;
+      background: linear-gradient(135deg, #c495bd, #c66cb8, #d68fe5);
+      opacity: 0.4;
+      z-index: -1;
+    }
+
+    @keyframes floatIn {
+      0%   { opacity: 0; transform: translateY(25px) scale(0.97); }
+      100% { opacity: 1; transform: translateY(0)    scale(1); }
+    }
+
+    .subtitle {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      color: #0f0f10;
+      margin-bottom: 6px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 30px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #ffffff;
+    }
+
+    .line {
+      height: 3px;
+      width: 110px;
+      background: linear-gradient(90deg, #c360c3, #f992f6);
+      margin: 14px auto 22px;
+      border-radius: 999px;
+    }
+
+    h2 {
+      margin: 0 0 14px;
+      font-size: 23px;
+      color: #ffdf85;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .info {
+      margin: 6px 0;
+      font-size: 15px;
+      color: #e5e5ff;
+    }
+
+    .label {
+      font-weight: 600;
+      color: #ffffff;
+    }
+
+    .message {
+      margin: 22px 0 10px;
+      font-size: 15px;
+      color: #dcdcff;
+      line-height: 1.7;
+    }
+
+    .rsvp {
+      margin-top: 18px;
+      font-size: 14px;
+      color: #f0f0ff;
+    }
+
+    .btn {
+      margin-top: 22px;
+      display: inline-block;
+      padding: 11px 32px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #ebb4ee, #d878c2);
+      color: #df88d1;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 14px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      box-shadow: 0 10px 24px rgba(240, 143, 232, 0.6);
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .btn::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -40%;
+      width: 40%;
+      height: 100%;
+      background: linear-gradient(120deg, rgba(255,255,255,0.8), transparent);
+      transform: skewX(-25deg);
+      opacity: 0;
+      transition: all 0.35s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 32px rgba(255, 111, 145, 0.8);
+    }
+
+    .btn:hover::before {
+      left: 120%;
+      opacity: 1;
+    }
+
+    .footer-note {
+      margin-top: 14px;
+      font-size: 12px;
+      color: #c4c4ff;
+    }
+  </style>
+</head>
+<body>
+ 
+  <div class="card">
+    <div class="subtitle">UIET · CSE · Civil</div>
+    <h1>You’re Invited!</h1>
+    <div class="line"></div>
+    <h2 id="usernameDisplay"></h2>
+
+    <h2></h2>
+
+    <p class="info"><span class="label">Date:</span> 9 April 2026 (Thursday)</p>
+    <p class="info"><span class="label">Time:</span> 11:00 AM onwards</p>
+    <p class="info"><span class="label">Venue:</span> Seminar Hall UIET, </p>
+
+    <p class="message">
+      Hey Freshers
+      Get ready for a fun-filled day with music, games, dance and lots of photos as we officially welcome you to the UIET family.  
+      Come, make new friends, interact with your seniors and create memories you’ll never forget!
+    </p>
+
+    <p class="message">
+      We can’t wait to celebrate this new beginning with you.  
+      Your presence will make the party complete. ✨
+    </p>
+
+    
+    
+    <div class="footer-note">
+      Dress code: Smart casual · Bring your energy, your smiles and your squad!
+    </div>
+    <script>
+  const params = new URLSearchParams(window.location.search);
+  const name = params.get("username");
+
+  if(name){
+    document.getElementById("usernameDisplay").innerText =
+      "Welcome, " + name + " 🎉";
+  } else {
+    document.getElementById("usernameDisplay").innerText =
+      "Welcome, Guest 🎉";
+  }
+</script>
+  </div>
+</body>
+</html>
